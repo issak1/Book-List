@@ -1,9 +1,9 @@
 class BookNode:
-  def __init(self, book_name), author, date_published, read=False):
+    def __init__(self, book_name, author, date_published, read=False):
         self.book_name = book_name
         self.author = author
         self.date_published = date_published
-        self.read = read # indicate if a book has been read
+        self.read = read  
         self.next = None
 
 class BookLinkedList:
@@ -63,8 +63,8 @@ class BookLinkedList:
 
     def sort_books(self, by='author'):
         if self.head is None or self.head.next is None:
-          return # dont sort if list is empty
-        
+            return  # No need to sort if list is empty or has only one book
+
         swapped = True
         while swapped:
             current = self.head
@@ -72,20 +72,20 @@ class BookLinkedList:
             while current.next:
                 if by == 'author':
                     if current.author > current.next.author:
-                    # swap current node and next node
-                    current.book_name, current.next.book_name = current.next.book_name, current.book_name
-                    current.author, current.next.author = current.next.author, current.author
-                    current.date_published, current.next.date_published = current.next.date_published, current.date_published
-                    current.read, current.next.read = current.next.read, current.read
-                    swapped = True
+                        # swap current node and next node
+                        current.book_name, current.next.book_name = current.next.book_name, current.book_name
+                        current.author, current.next.author = current.next.author, current.author
+                        current.date_published, current.next.date_published = current.next.date_published, current.date_published
+                        current.read, current.next.read = current.next.read, current.read
+                        swapped = True
                 elif by == 'read':
-                  if not current.read and current.next.read:
-                    #swap current node and next node
-                    current.book_name, current.next.book_name = current.next.book_name, current.book_name
-                    current.author, current.next.author = current.next.author, current.author
-                    current.date_published, current.next.date_published = current.next.date_published, current.date_published
-                    current.read, current.next.read = current.next.read, current.read
-                    swapped = True
+                    if not current.read and current.next.read:
+                        # swap current node and next node
+                        current.book_name, current.next.book_name = current.next.book_name, current.book_name
+                        current.author, current.next.author = current.next.author, current.author
+                        current.date_published, current.next.date_published = current.next.date_published, current.date_published
+                        current.read, current.next.read = current.next.read, current.read
+                        swapped = True
                 current = current.next
 
     def mark_as_read(self, book_name):
