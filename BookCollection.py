@@ -63,8 +63,8 @@ class BookLinkedList:
 
     def sort_books(self, by='author'):
         if self.head is None or self.head.next is None:
-            return  # No need to sort if list is empty or has only one book
-
+            return
+            
         swapped = True
         while swapped:
             current = self.head
@@ -72,7 +72,6 @@ class BookLinkedList:
             while current.next:
                 if by == 'author':
                     if current.author > current.next.author:
-                        # swap current node and next node
                         current.book_name, current.next.book_name = current.next.book_name, current.book_name
                         current.author, current.next.author = current.next.author, current.author
                         current.date_published, current.next.date_published = current.next.date_published, current.date_published
@@ -80,7 +79,6 @@ class BookLinkedList:
                         swapped = True
                 elif by == 'read':
                     if not current.read and current.next.read:
-                        # swap current node and next node
                         current.book_name, current.next.book_name = current.next.book_name, current.book_name
                         current.author, current.next.author = current.next.author, current.author
                         current.date_published, current.next.date_published = current.next.date_published, current.date_published
